@@ -7,4 +7,6 @@ const rootReducer = combineReducers({
   carrinhoReducer
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 export default rootReducer;

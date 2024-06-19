@@ -3,6 +3,7 @@ import Header from './components/Header';
 import light from './themes/light';
 import dark from './themes/dark';
 import { useState } from 'react';
+import Cardapio from './components/Cardapio';
 
 function App() {
   const [theme, setTheme] = useState(light);
@@ -17,6 +18,7 @@ function App() {
         onChangeTheme={onChangeTheme}
         imgBanner='https://preodemo.gumlet.io/usr/venue/7602/web/646fbf3abf9d0.png'
       />
+      <Cardapio />
     </ThemeProvider>
   )
 }
