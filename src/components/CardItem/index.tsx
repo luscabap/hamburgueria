@@ -1,22 +1,32 @@
-import { useDispatch } from "react-redux";
-import { addProdutoAoCarrinho } from "../../redux/carrinho/actions";
+import { useState } from "react";
 import { ItemProps } from "../../types/Item";
-import * as Style from "./styles";
 import { conversorMoeda } from "../../utils/conversorModeda";
+import { Modal } from "../Modal";
+import * as Style from "./styles";
 
 interface ICardItemProps {
   item: ItemProps
 }
 
 export const CardItem = ({ item }: ICardItemProps) => {
-  const dispatch = useDispatch()
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleClickAddProduto = () => {
-    dispatch(addProdutoAoCarrinho(item))
+  const handleClickModal = () => {
+    setModalIsOpen(!modalIsOpen)
+  }
+
+  const closeModal = () => {
+    setModalIsOpen(false);
   }
 
   return (
-    <Style.Container onClick={handleClickAddProduto}>
+    <>
+    <Modal 
+      modalIsOpen={modalIsOpen}
+      closeModal={closeModal}
+      item={item}
+    />
+    <Style.Container onClick={handleClickModal}>
       <div className="containerInfos">
         <h1 className="titulo">{item.name}</h1>
         <p className="descricao">{item.description}</p>
@@ -24,5 +34,6 @@ export const CardItem = ({ item }: ICardItemProps) => {
       </div>
       { item?.images?.map(imagem => <img key={imagem.id} alt="Imagem da comida" src={imagem.image} className="imagem"/>) }
     </Style.Container>
+    </>
   )
 }
