@@ -9,7 +9,7 @@ interface IHeaderProps {
 }
 
 const Header = ({ onChangeTheme, imgBanner }: IHeaderProps) => {
-  const { name, colors } = useContext(ThemeContext);
+  const context = useContext(ThemeContext);
 
   return (
     <>
@@ -23,13 +23,13 @@ const Header = ({ onChangeTheme, imgBanner }: IHeaderProps) => {
       </nav>
       <Switch 
         onChange={onChangeTheme}
-        checked={name === "light"}
+        checked={context!.name === "light"}
         height={20}
         width={40}
         checkedIcon={false}
         uncheckedIcon={false}
         handleDiameter={20}
-        onColor={colors.background}
+        onColor={context!.colors.background}
         className="switch-theme"
       />
     </Style.Container>

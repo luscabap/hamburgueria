@@ -1,6 +1,6 @@
+import { Dispatch } from 'redux';
 import { ResponseApiProps } from "../../types/ResponseApi";
 import ItemsActionTypes from "./action-types";
-import { Dispatch } from 'redux';
 
 export const fetchItemRequest = () => ({
   type: ItemsActionTypes.FETCH_ITEMS_REQUEST
