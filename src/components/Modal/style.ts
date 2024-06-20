@@ -21,7 +21,7 @@ export const ContainerModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   .botaoFecharModal{
     position: absolute;
@@ -40,12 +40,11 @@ export const ContainerModal = styled.div`
 
   .imagemComida{
     width: 100%;
-    height: 320px;
+    max-height: 320px;
   }
 
   .containerInfos{
     padding: 10px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -60,6 +59,56 @@ export const ContainerModal = styled.div`
       font-weight: 400;
       font-size: 16px;
       color: ${props => props.theme.colors.textColorSecondary}
+    }
+  }
+
+  .containerEscolha{
+    width: 100%;
+    padding: 10px;
+
+    .subtitulo{
+      font-weight: 700;
+      font-size: 16px;
+      color: ${props => props.theme.colors.textColorSecondary}
+    }
+
+    .selecionarOpcao{
+      font-size: 16px;
+      font-weight: 400;
+      color: #5f5f5f;
+    }
+
+    .containerOpcao{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 1rem;
+      height: 72px;
+
+      &__Infos{
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+
+          &__labelMeat{
+            font-size: 16px;
+            color: ${props => props.theme.colors.textColorPrimary};
+            font-weight: 500;
+          }
+    
+          &__labelPrice{
+            font-size: 16px;
+            color: ${props => props.theme.colors.textColorSecondary};
+            font-weight: 400;
+          }
+      }
+
+
+      &__input{
+        width: 24px;
+        height: 24px;
+        border: 10px solid #5f5f5f;
+      }
     }
   }
 
