@@ -14,7 +14,7 @@ interface ICarrinhoProps {
   produtos: produtos[]
 }
 
-export const Carrinho = () => {
+const Carrinho = () => {
   const { produtos }:ICarrinhoProps = useSelector((state: RootState) => state.carrinhoReducer); 
 
   const quantidadeProdutos = useSelector(selectQuantityProducts);
@@ -37,3 +37,5 @@ export const Carrinho = () => {
     </div>
   )
 }
+
+export default Carrinho;
