@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
-export const Container = styled.header`
+interface IContainerProps {
+  isOpen: boolean;
+}
+
+export const Container = styled.header<IContainerProps>`
   background-color: ${props => props.theme.colors.primary};
   max-width: 100%;
   height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-   
-  nav {
-    max-height: 100%;
-
-    .itemMobile{
+  .itemMobile{
       display: none;
     }
-
+  nav {
+    max-height: 100%;
     .container__lista {
       display: flex;
       justify-content: center;
@@ -33,20 +34,44 @@ export const Container = styled.header`
     }
   }
 
-  @media screen and (max-width: 425px){
+  .menuBurguerMobile{
+    display: none;
+  }
 
+  @media screen and (max-width: 425px){
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+
+    .itemMobile{
+        display: block;
+        font-weight: 500;
+        color: #fff;
+    }
       nav {
-        .itemMobile{
-          display: block;
-          font-weight: 500;
-          color: #fff;
-        }
+        display: ${props => props.isOpen ? 'inline' : 'none'};
+        width: 100%;
 
         .container__lista {
-          display: none;
+          flex-direction: column;
+          position: relative;
+          background-color: ${props => props.theme.colors.background};
+          z-index: 1000;
+          top: 50px;
+          right: -120px;
+          
+          &__item{
+            padding: 10px 0;
+            color: ${props => props.theme.colors.textColorPrimary};
+            border: 1px solid ${props => props.theme.colors.primary};
+            height: 100%;
+          }
         }
       }
-      
+
+      .menuBurguerMobile{
+        display: block;
+      }
   }
 `;
 

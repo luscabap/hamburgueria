@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import * as Style from "./styles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
+import { IoMenu } from "react-icons/io5";
 
 interface IHeaderProps {
   onChangeTheme: () => void,
@@ -11,13 +12,17 @@ interface IHeaderProps {
 const Header = ({ onChangeTheme, imgBanner }: IHeaderProps) => {
   const context = useContext(ThemeContext);
 
-  const [menuBurguer, setMenuBurguer] = useState("container__lista");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuBurguer = () => {
+    setMenuOpen(!menuOpen)
+  }
 
   return (
     <>
-    <Style.Container>
+    <Style.Container isOpen={menuOpen}>
+      <h2 className="itemMobile">Menu</h2>
       <nav>
-        <h2 className="itemMobile">Menu</h2>
         <ul className="container__lista">
           <li className="container__lista__item">MENU</li>
           <li className="container__lista__item">ENTRAR</li>
@@ -35,7 +40,7 @@ const Header = ({ onChangeTheme, imgBanner }: IHeaderProps) => {
         onColor={context!.colors.background}
         className="switch-theme"
       />
-      
+      <IoMenu size={42} color="#fff" className="menuBurguerMobile" onClick={handleMenuBurguer}/>
     </Style.Container>
     <Style.ContainerImg>
         <img src={imgBanner} alt="Selo do restaurante" />
