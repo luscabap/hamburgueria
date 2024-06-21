@@ -22,7 +22,6 @@ const carrinhoReducer = (state = initialState, action) => {
   switch (action.type) {
     case CarrinhoActionTypes.ADD_PRODUTO:
     if (produtoEstaNoCarrinho){
-      console.log("IF TRUE PRODUTO ESTÁ NO CARRINHO!")
       return { 
         ...state, 
         produtos: state.produtos.map(
@@ -42,6 +41,32 @@ const carrinhoReducer = (state = initialState, action) => {
         { ...action.payload, valorQuantidade: action.payload.valorQuantidade }
       ],
     }
+
+    case CarrinhoActionTypes.REMOVE_PRODUTO:
+      return {
+        ...state,
+        produtos: state.produtos.filter(item => item.id !== action.payload.id)
+    }
+
+    case CarrinhoActionTypes.INCREASE_PRODUTO:
+      return {
+        ...state,
+        produtos: state.produtos.map(
+          produto => produto.id === action.payload.id
+          ? { ...produto, valorQuantidade: produto.valorQuantidade + 1 }
+          : produto
+        )
+      }
+
+    case CarrinhoActionTypes.DECREASE_PRODUTO:
+      return {
+        ...state,
+        produtos: state.produtos.map(
+          produto => produto.id === action.payload.id
+          ? { ...produto, valorQuantidade: produto.valorQuantidade - 1 }
+          : produto
+        )  
+      }
 
     default:
       return state;

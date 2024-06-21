@@ -73,7 +73,7 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
                     </div>
                   )}
                 </div>
-              )) }
+              ))}
             </form>
           </div>)
         }
