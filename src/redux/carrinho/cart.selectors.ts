@@ -3,5 +3,5 @@ export const selectQuantityProducts = (rootReducer) => {
 }
 
 export const selectTotalValueProducts = (rootReducer) => {
-  return rootReducer.carrinhoReducer.produtos.reduce((acc, curr) => acc + (curr.valorAtualizado * curr.valorQuantidade) ,0)
+  return rootReducer.carrinhoReducer.produtos.reduce((acc, curr) => acc + curr.valorAtualizado ,0)
 }
