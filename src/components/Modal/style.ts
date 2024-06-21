@@ -87,8 +87,16 @@ export const ContainerModal = styled.div`
 
       &__Infos{
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         cursor: pointer;
+        width: 100%;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+          }
 
           &__labelMeat{
             font-size: 16px;
@@ -111,8 +119,48 @@ export const ContainerModal = styled.div`
       }
     }
   }
+`;
 
-  .botaoAdicionarCarrinho{
+type ContainerQuantidadeProps = {
+  valor: number;
+}
+export const ContainerQuantidade = styled.div<ContainerQuantidadeProps>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  label {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    background-color: ${props => props.theme.colors.primary};
+    border-radius: 50%;
+    color: ${props => props.theme.colors.textColorContrast}
+  }
+
+  input {
+    border: none;
+    width: 50px;
+    font-size: 24px;
+    font-weight: 600;
+    color: ${props => props.theme.colors.contrast};
+    text-align: center;
+  }
+
+  .labelDecrementar{
+    pointer-events: ${props => props.valor > 1 ? 'all' : 'none'};
+    background-color: ${props => props.valor > 1 ? props.theme.colors.primary : props.theme.colors.background};
+    color: ${props => props.valor > 1 ? props.theme.colors.textColorContrast : props.theme.colors.textColorPrimary}
+  }
+`
+
+type BotaoPrecoProps = {
+  opcoes_lanche:  string;
+}
+
+export const BotaoPreco = styled.button<BotaoPrecoProps>`
     width: 432px;
     height: 48px;
     border-radius: 40px;
@@ -124,5 +172,5 @@ export const ContainerModal = styled.div`
     font-weight: 500;
     cursor: pointer;
     margin: 0 0 12px 0;
-  }
-`;
+    display: ${props => props.opcoes_lanche === "true" ? 'none' : 'false'};
+`

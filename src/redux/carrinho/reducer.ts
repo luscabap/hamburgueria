@@ -1,7 +1,18 @@
-import CarrinhoActionTypes from "./action-types";
-import { ItemProps } from "../../types/Item"
+import { ItemProps } from "../../types/Item";
+import CarrinhoActionTypes, { ItemCarrinhoProps } from "./action-types";
 
-const initialState = {
+type ReduxProps = {
+  payload: ItemProps,
+  id: number,
+  valorAtualizado: number,
+  valorQuantidade: number
+}
+
+interface ICarrinhoProps {
+  produtos: ReduxProps[] | []
+}
+
+const initialState: ICarrinhoProps = {
   produtos: [],
 }
 
@@ -10,18 +21,23 @@ const carrinhoReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case CarrinhoActionTypes.ADD_PRODUTO:
-
     if (produtoEstaNoCarrinho){
-      return { ...state, produtos: state.produtos.map(
+      return { 
+        ...state, 
+        produtos: state.produtos.map(
         produto => produto.id === action.payload.id 
-          ? { ...produto, quantidade: produto.quantidade + 1 } 
+          ? { 
+              ...produto,
+              valorAtualizado: produto.valorAtualizado + action.payload.valorAtualizado,
+              valorQuantidade: produto.valorQuantidade + action.payload.valorQuantidade 
+          } 
           : produto
-        )
+        ),
       }
     }
     return {
       ...state,
-      produtos: [ ...state.produtos, { ...action.payload, quantidade: 1 } ]
+      produtos: [ ...state.produtos, { ...action.payload, valorQuantidade: action.payload.valorQuantidade }],
     }
 
     default:

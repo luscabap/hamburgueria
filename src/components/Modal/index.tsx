@@ -3,6 +3,7 @@ import { ItemProps } from "../../types/Item";
 import * as Style from "./style";
 import { addProdutoAoCarrinho } from "../../redux/carrinho/actions";
 import { conversorMoeda } from "../../utils/conversorModeda";
+import { useState } from "react";
 
 interface IModalProps {
   item: ItemProps
@@ -11,14 +12,25 @@ interface IModalProps {
 }
 
 export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
+  const [valorQuantidade, setValorQuantidade] = useState(1);
+
   const dispatch = useDispatch();
-  
+
+  const resetNumberQtd = () => {
+    setValorQuantidade(1)
+  }
+
   const handleClickAddProduto = () => {
-    dispatch(addProdutoAoCarrinho(item))
+    dispatch(addProdutoAoCarrinho(item, valorQuantidade, valorAtualizado));
     closeModal();
+    resetNumberQtd();
   }
 
   if (!modalIsOpen) return <></>
+
+  const opcoes_lanche = item.modifiers ? "true" : "false";
+
+  const valorAtualizado = (item.price * valorQuantidade);
 
   return (
     <Style.BackgroundModal>
@@ -40,27 +52,42 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
           <div className="containerEscolha">
             <h2 className="subtitulo">{ item.modifiers[0]!.name }</h2>
             <p className="selecionarOpcao">Select 1 option</p>
-            <div>
+            <form>
               { item.modifiers[0]!.items.map(opcao => (
-                <form key={opcao.id}>
+                <div key={opcao.id}>
                   {opcao.available && (
                     <div className="containerOpcao">
                       <div className="containerOpcao__Infos">
-                        <label htmlFor={String(opcao.id)} className="containerOpcao__Infos__labelMeat">{opcao.name}</label>
-                        <label htmlFor={String(opcao.id)} className="containerOpcao__Infos__labelPrice">{conversorMoeda(opcao.price)}</label>
+                        <label htmlFor={opcao.name}>
+                          <p className="containerOpcao__Infos__labelMeat">{opcao.name}</p>
+                          <p className="containerOpcao__Infos__labelPrice">{conversorMoeda(opcao.price)}</p>
+                        </label>
+                        <input 
+                          type="radio" 
+                          id={opcao.name} 
+                          name="opcao"
+                          value={opcao.name}
+                          className="containerOpcao__input"
+                        />
                       </div>
-                      <input type="radio" id={String(opcao.id)} className="containerOpcao__input"/>
                     </div>
                   )}
-                </form>
+                </div>
               )) }
-            </div>
+            </form>
           </div>)
         }
-        <button 
-            onClick={() => handleClickAddProduto()}
-            className="botaoAdicionarCarrinho"
-        >Add to Order - $ {item.price}</button>
+
+        <Style.ContainerQuantidade valor={valorQuantidade} >
+          <label onClick={() => setValorQuantidade(prev => prev - 1)} className="labelDecrementar">-</label>
+          <input type="text" value={valorQuantidade} readOnly={true}/>
+          <label onClick={() => setValorQuantidade(prev => prev + 1)}>+</label>
+        </Style.ContainerQuantidade>
+
+        <Style.BotaoPreco 
+            onClick={handleClickAddProduto}
+            opcoes_lanche={opcoes_lanche}
+        >Add to Order - $ {valorAtualizado}</Style.BotaoPreco>
 
       </Style.ContainerModal>
     </Style.BackgroundModal>

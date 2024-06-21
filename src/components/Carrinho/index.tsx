@@ -1,22 +1,32 @@
 import { useSelector } from "react-redux"
 import { ItemProps } from "../../types/Item"
 import { RootState } from "../../redux/root-reducer"
+import { ItemCarrinho } from "../ItemCarrinho"
+
+type produtos = {
+  payload: ItemProps,
+  valorAtualizado: number,
+  valorQuantidade: number
+}
 
 interface ICarrinhoProps {
-  produtos: ItemProps[]
+  produtos: produtos[]
 }
 
 export const Carrinho = () => {
-  const { produtos }:ICarrinhoProps = useSelector((state: RootState) => state.carrinhoReducer)
+  const { produtos }:ICarrinhoProps = useSelector((state: RootState) => state.carrinhoReducer); 
   
   return (
     <div>
-      <h1>Itens do carrinho</h1>
+      <h1>Carrinho</h1>
       { produtos.map(item => (
-        <div key={item.name}>
-          <h2>{item.name}</h2>
-          <p>{item.quantidade}</p>
-        </div>
+        <ItemCarrinho 
+          key={item.payload.id}
+          nome={item.payload.name}
+          preco={item.valorAtualizado}
+          quantidade={item.valorQuantidade}
+          valorTotal={item.valorAtualizado}
+        />
       )) }
     </div>
   )

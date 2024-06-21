@@ -14,7 +14,7 @@ export const CardItem = ({ item }: ICardItemProps) => {
   const handleClickModal = () => {
     setModalIsOpen(!modalIsOpen)
   }
-
+  
   const closeModal = () => {
     setModalIsOpen(false);
   }
