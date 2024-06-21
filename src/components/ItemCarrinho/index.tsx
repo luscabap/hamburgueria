@@ -20,9 +20,6 @@ export const ItemCarrinho = ({ nome, quantidade, valorTotal }: IItemCarrinhoProp
         <input type="text" readOnly={true} value={quantidade}/>
         <button>+</button>
       </div>
-      <div>
-        <h3>Total:</h3>
-      </div>
     </Style.Container>
   )
 }

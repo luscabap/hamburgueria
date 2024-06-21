@@ -28,6 +28,7 @@ export const Carrinho = () => {
           valorTotal={item.valorAtualizado}
         />
       )) }
+      <h2>Total: </h2>
     </div>
   )
 }
