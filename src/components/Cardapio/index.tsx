@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../../redux/items/actions";
 import { RootState } from "../../redux/root-reducer";
-import { Carrinho } from "../Carrinho";
+import Carrinho from "../Carrinho";
 import { ListaItems } from "../ListaItems";
 import * as Style from "./styles";
 import { CiSearch } from "react-icons/ci";

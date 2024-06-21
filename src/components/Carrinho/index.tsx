@@ -27,9 +27,9 @@ const Carrinho = () => {
         <ItemCarrinho 
           key={item.payload.id}
           nome={item.payload.name}
-          preco={item.valorAtualizado}
+          preco={item.payload.price}
           quantidade={item.valorQuantidade}
-          valorTotal={item.valorAtualizado}
+          valorTotal={item.payload.price}
           id={item.payload.id}
         />
       )) }
