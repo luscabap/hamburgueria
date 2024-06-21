@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+<h1 align="center"> 💻 Lucas Baptista - Portfólio 🚀 </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-layout">Layout</a> • 
+ <a href="#-tecnologias">Tecnologias</a> • 
+ <a href="#-autor">Desenvolvedor</a> • 
+ <a href="#user-content--licença">Licença</a>
+</p>
 
-Currently, two official plugins are available:
+## 🖥️ Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O projeto foi desenvolvido a fim de um desafio para entrevista de emprego. 
+A página consiste em uma página de hamburgueria onde tem a opção de você comprar hamburguers, onde ao adicionar ao carrinho o item, ele será renderizado na seção de Carrinho, carregando a quantidade de itens e o valor total do carrinho.
 
-## Expanding the ESLint configuration
+🌎 Deploy do projeto: []()
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🖼️ Layout
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+_WEB_
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![GK1](https://github.com/luscabap/hamburgueria/blob/main/public/web_01.png)
+![GK1](https://github.com/luscabap/hamburgueria/blob/main/public/web_02.png)
+![GK1](https://github.com/luscabap/hamburgueria/blob/main/public/web_03.png)
+
+
+---
+
+## 🛠 Tecnologias 
+
+As seguintes ferramentas foram usadas para desenvolver o projeto:
+
+### Front End
+- REACT <img align="center" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/>
+- TYPESCRIPT <img align="center" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"/>
+- STYLED COMPONENTS 
+- VITE <img align="center" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"/>
+- NPM <img align="center" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg"/>
+ 
+          
+### Ambiente de Desenvolvimento
+- Visual Studio Code <img align="center" height="30" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original-wordmark.svg"/>
+
+---
+
+## 👨‍🎓 Desenvolvedor
+
+<a href="https://www.linkedin.com/in/lucas-baptista-da-silva-133779233/">
+Lucas Baptista da Silva</a>
+
+<br/>
+
+<a href = "mailto:lucasbaptistasilva.dev@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white"  target="_blank"></a>
+
+---
+
+### 📝 Licença
+
