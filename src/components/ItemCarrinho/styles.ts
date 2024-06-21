@@ -30,14 +30,17 @@ export const Container = styled.div`
     width: 94px;
     gap: 4px;
 
-    button{
+    div{
       width: 20px;
       height: 20px;
       background-color: ${props => props.theme.colors.primary};
       color: ${props => props.theme.colors.textColorContrast};
-      text-align: center;
       border-radius: 50%;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
 
     input{

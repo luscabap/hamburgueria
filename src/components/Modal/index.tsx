@@ -4,6 +4,9 @@ import * as Style from "./style";
 import { addProdutoAoCarrinho } from "../../redux/carrinho/actions";
 import { conversorMoeda } from "../../utils/conversorModeda";
 import { useState } from "react";
+import { IoMdClose  } from "react-icons/io";
+import { FaPlus, FaMinus } from "react-icons/fa";
+
 
 interface IModalProps {
   item: ItemProps
@@ -35,7 +38,9 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
   return (
     <Style.BackgroundModal>
       <Style.ContainerModal>
-        <button onClick={closeModal} className="botaoFecharModal">X</button>
+        <div onClick={closeModal} className="botaoFecharModal">
+          <IoMdClose size={28}/>
+        </div>
         <img 
           src="https://preodemo.gumlet.io/usr/venue/7602/section/646fbe4c64a6f.png" 
           alt={`Imagem da comida ${item.name}`}
@@ -78,17 +83,22 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
           </div>)
         }
 
-        <Style.ContainerQuantidade valor={valorQuantidade} >
-          <label onClick={() => setValorQuantidade(prev => prev - 1)} className="labelDecrementar">-</label>
-          <input type="text" value={valorQuantidade} readOnly={true}/>
-          <label onClick={() => setValorQuantidade(prev => prev + 1)}>+</label>
-        </Style.ContainerQuantidade>
 
-        <Style.BotaoPreco 
-            onClick={handleClickAddProduto}
-            opcoes_lanche={opcoes_lanche}
-        >Add to Order - $ {valorAtualizado}</Style.BotaoPreco>
-
+        <div>
+          <Style.ContainerQuantidade valor={valorQuantidade} >
+            <div onClick={() => setValorQuantidade(prev => prev - 1)} className="opcaoDecrementar">
+              <FaMinus color="#FFF"/>
+            </div>
+            <input type="text" value={valorQuantidade} readOnly={true}/>
+            <div onClick={() => setValorQuantidade(prev => prev + 1)}>
+              <FaPlus color="#FFF"/>
+            </div>
+          </Style.ContainerQuantidade>
+          <Style.BotaoPreco 
+              onClick={handleClickAddProduto}
+              opcoes_lanche={opcoes_lanche}
+          >Add to Order - $ {valorAtualizado}</Style.BotaoPreco>
+        </div>
       </Style.ContainerModal>
     </Style.BackgroundModal>
   )

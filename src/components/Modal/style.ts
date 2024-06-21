@@ -21,13 +21,13 @@ export const ContainerModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 
   .botaoFecharModal{
     position: absolute;
-    right: 12px;
-    top: 12px;
-    background-color: #F8F9FA;
+    right: 16px;
+    top: 16px;
+    background-color: #fff;
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -130,14 +130,16 @@ export const ContainerQuantidade = styled.div<ContainerQuantidadeProps>`
   align-items: center;
   justify-content: center;
 
-  label {
+  div {
     cursor: pointer;
     width: 32px;
     height: 32px;
-    text-align: center;
     background-color: ${props => props.theme.colors.primary};
     border-radius: 50%;
-    color: ${props => props.theme.colors.textColorContrast}
+    color: ${props => props.theme.colors.textColorContrast};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   input {
@@ -149,7 +151,7 @@ export const ContainerQuantidade = styled.div<ContainerQuantidadeProps>`
     text-align: center;
   }
 
-  .labelDecrementar{
+  .opcaoDecrementar{
     pointer-events: ${props => props.valor > 1 ? 'all' : 'none'};
     background-color: ${props => props.valor > 1 ? props.theme.colors.primary : props.theme.colors.background};
     color: ${props => props.valor > 1 ? props.theme.colors.textColorContrast : props.theme.colors.textColorPrimary}
@@ -173,4 +175,5 @@ export const BotaoPreco = styled.button<BotaoPrecoProps>`
     cursor: pointer;
     margin: 0 0 12px 0;
     display: ${props => props.opcoes_lanche === "true" ? 'none' : 'false'};
+    margin-top: 2rem;
 `

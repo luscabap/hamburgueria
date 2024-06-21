@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { conversorMoeda } from "../../utils/conversorModeda";
 import * as Style from "./styles";
 import { decreaseProdutoDoCarrinho, increaseProdutoDoCarrinho, removeProdutoDoCarrinho } from "../../redux/carrinho/actions";
+import { FaPlus, FaMinus } from "react-icons/fa";
+import { IoMdClose  } from "react-icons/io";
 
 interface IItemCarrinhoProps {
   nome: string,
@@ -9,6 +11,11 @@ interface IItemCarrinhoProps {
   quantidade: number,
   valorTotal: number,
   id: number
+}
+
+const iconProps = {
+  size: 14,
+  color: "#FFF"
 }
 
 export const ItemCarrinho = ({ nome, quantidade, valorTotal, id }: IItemCarrinhoProps) => {
@@ -26,6 +33,7 @@ export const ItemCarrinho = ({ nome, quantidade, valorTotal, id }: IItemCarrinho
     dispatch(decreaseProdutoDoCarrinho(id))
   }
 
+
   return (
     <Style.Container>
       <div className="containerInfos">
@@ -34,11 +42,11 @@ export const ItemCarrinho = ({ nome, quantidade, valorTotal, id }: IItemCarrinho
       </div>
       <div className="containerQtd">
         { quantidade <= 1 
-        ? <button onClick={handleClickDeleteItem}>X</button> 
-        : <button onClick={handleClickDecreaseItem}>-</button>
+        ? <div onClick={handleClickDeleteItem}><IoMdClose {...iconProps}/></div> 
+        : <div onClick={handleClickDecreaseItem}><FaMinus {...iconProps}/></div>
         }
         <input type="text" readOnly={true} value={quantidade}/>
-        <button onClick={handleClickIncreaseItem}>+</button>
+        <div onClick={handleClickIncreaseItem}><FaPlus {...iconProps}/></div>
       </div>
     </Style.Container>
   )

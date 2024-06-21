@@ -9,6 +9,9 @@ export const Container = styled.div`
   .containerInfos {
     min-height: 85px;
     width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
     .titulo{
       color: ${props => props.theme.colors.textColorPrimary};

@@ -2,7 +2,9 @@ import { useSelector } from "react-redux"
 import { ItemProps } from "../../types/Item"
 import { RootState } from "../../redux/root-reducer"
 import { ItemCarrinho } from "../ItemCarrinho"
-import { selectProductsCount, selectQuantityProducts, selectTotalValueProducts } from "../../redux/carrinho/cart.selectors"
+import { selectProductsCount, selectQuantityProducts, selectTotalValueProducts } from "../../redux/carrinho/cart.selectors";
+import * as Style from "./styles"
+import { conversorMoeda } from "../../utils/conversorModeda";
 
 type produtos = {
   payload: ItemProps,
@@ -33,7 +35,8 @@ const Carrinho = () => {
           id={item.payload.id}
         />
       )) }
-      <h2>Total: {quantidadeTotal}</h2>
+      {produtos.length === 0 && <Style.ContainerMensagem>Seu carrinho está vazio</Style.ContainerMensagem>}
+      <h2>Total: {conversorMoeda(quantidadeTotal)}</h2>
     </div>
   )
 }
