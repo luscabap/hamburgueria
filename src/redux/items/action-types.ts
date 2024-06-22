@@ -20,6 +20,8 @@ interface FetchItemsFailureAction {
   payload: string; 
 }
 
+
+
 export type ItemsActionsProps = FetchItemsRequestAction | FetchItemsSuccessAction | FetchItemsFailureAction;
 
 export default ItemsActionTypes;

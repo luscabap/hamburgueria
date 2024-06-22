@@ -1,10 +1,14 @@
-import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./root-reducer";
-import { thunk } from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import rootReducer from "./root-reducer";
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+const store = configureStore({
+ reducer: rootReducer, 
+ middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+});
 
 export default store;
 
-export type AppStore = typeof store
+export type AppStore = typeof store;
+
+export type AppDispatch = AppStore['dispatch'];

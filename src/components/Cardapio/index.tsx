@@ -6,10 +6,11 @@ import Carrinho from "../Carrinho";
 import { ListaItems } from "../ListaItems";
 import * as Style from "./styles";
 import { CiSearch } from "react-icons/ci";
+import { AppDispatch } from "../../redux/store";
 
 
 const Cardapio = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { loading, items, error } = useSelector((state: RootState) => state.itemReducer)
 
   useEffect(() => {
