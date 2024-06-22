@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IContainerProps {
-  isOpen: boolean;
+  isopen: string;
 }
 
 export const Container = styled.header<IContainerProps>`
@@ -49,7 +49,7 @@ export const Container = styled.header<IContainerProps>`
         color: #fff;
     }
       nav {
-        display: ${props => props.isOpen ? 'inline' : 'none'};
+        display: ${props => props.isopen};
         width: 100%;
 
         .container__lista {

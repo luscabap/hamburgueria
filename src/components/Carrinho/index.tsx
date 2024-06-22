@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { ItemProps } from "../../types/Item"
 import { RootState } from "../../redux/root-reducer"
 import { ItemCarrinho } from "../ItemCarrinho"
-import { selectProductsCount, selectQuantityProducts, selectTotalValueProducts } from "../../redux/carrinho/cart.selectors";
+import { selectQuantityProducts, selectTotalValueProducts } from "../../redux/carrinho/cart.selectors";
 import * as Style from "./styles"
 import { conversorMoeda } from "../../utils/conversorModeda";
 

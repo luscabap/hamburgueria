@@ -20,7 +20,7 @@ const Header = ({ onChangeTheme, imgBanner }: IHeaderProps) => {
 
   return (
     <>
-    <Style.Container isOpen={menuOpen}>
+    <Style.Container isopen={menuOpen ? 'inline' : 'none'}>
       <h2 className="itemMobile">Menu</h2>
       <nav>
         <ul className="container__lista">

@@ -1,3 +1,5 @@
+import { PayloadReduxPros } from "../../types/PayloadRedux";
+
 enum CarrinhoActionTypes {
   ADD_PRODUTO = 'carrinho/addProduto',
   REMOVE_PRODUTO = 'carrinho/removeProduto',
@@ -7,8 +9,24 @@ enum CarrinhoActionTypes {
 
 interface AddProduto {
   type: CarrinhoActionTypes.ADD_PRODUTO;
+  payload: PayloadReduxPros
 }
 
-export type ItemCarrinhoProps = AddProduto;
+interface RemoveProduto {
+  type: CarrinhoActionTypes.REMOVE_PRODUTO,
+  payload: PayloadReduxPros
+}
+
+interface IncreaseProduto {
+  type: CarrinhoActionTypes.INCREASE_PRODUTO,
+  payload: PayloadReduxPros
+}
+
+interface DecreaseProduto {
+  type: CarrinhoActionTypes.DECREASE_PRODUTO,
+  payload: PayloadReduxPros
+}
+
+export type ItemCarrinhoProps = AddProduto | RemoveProduto | IncreaseProduto | DecreaseProduto;
 
 export default CarrinhoActionTypes;

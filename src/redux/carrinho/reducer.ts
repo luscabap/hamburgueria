@@ -16,7 +16,7 @@ const initialState: ICarrinhoProps = {
   produtos: [],
 }
 
-const carrinhoReducer = (state = initialState, action) => {
+const carrinhoReducer = (state = initialState, action: ItemCarrinhoProps) => {
   const produtoEstaNoCarrinho = state.produtos.some(produto => produto.id === action.payload.id);
 
   switch (action.type) {
