@@ -13,7 +13,7 @@
 O projeto foi desenvolvido a fim de um desafio para entrevista de emprego. 
 A página consiste em uma página de hamburgueria onde tem a opção de você comprar hamburguers, onde ao adicionar ao carrinho o item, ele será renderizado na seção de Carrinho, carregando a quantidade de itens e o valor total do carrinho.
 
-🌎 Deploy do projeto: []()
+🌎 Deploy do projeto: [https://hamburgueria-topaz-seven.vercel.app/](https://hamburgueria-topaz-seven.vercel.app/)
 
 ---
 
