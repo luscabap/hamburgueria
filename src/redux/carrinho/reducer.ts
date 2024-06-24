@@ -1,8 +1,9 @@
 import { ItemProps } from "../../types/Item";
+import { ItemOpcaoProps } from "../../types/ItemOpcao";
 import CarrinhoActionTypes, { ItemCarrinhoProps } from "./action-types";
 
 type ReduxProps = {
-  payload: ItemProps,
+  payload: ItemProps | ItemOpcaoProps,
   id: number,
   valorAtualizado: number,
   valorQuantidade: number
@@ -21,27 +22,26 @@ const carrinhoReducer = (state = initialState, action: ItemCarrinhoProps) => {
 
   switch (action.type) {
     case CarrinhoActionTypes.ADD_PRODUTO:
-    if (produtoEstaNoCarrinho){
-      return { 
-        ...state, 
-        produtos: state.produtos.map(
-        produto => produto.id === action.payload.id 
-          ? { 
-              ...produto,
-              valorAtualizado: produto.valorAtualizado + action.payload.valorAtualizado,
-              valorQuantidade: produto.valorQuantidade + action.payload.valorQuantidade 
-          } 
-          : produto
-        ),
+      if (produtoEstaNoCarrinho){
+        return { 
+          ...state, 
+          produtos: state.produtos.map(
+          produto => produto.id === action.payload.id 
+            ? { 
+                ...produto,
+                valorAtualizado: produto.valorAtualizado + action.payload.valorAtualizado,
+                valorQuantidade: produto.valorQuantidade + action.payload.valorQuantidade 
+            } 
+            : produto
+          ),
+        }
       }
-    }
-    return {
-      ...state,
-      produtos: [ ...state.produtos, 
-        { ...action.payload, valorQuantidade: action.payload.valorQuantidade }
-      ],
-    }
-
+      return {
+        ...state,
+        produtos: [ ...state.produtos, 
+          { ...action.payload, valorQuantidade: action.payload.valorQuantidade }
+        ],
+      }
     case CarrinhoActionTypes.REMOVE_PRODUTO:
       return {
         ...state,

@@ -1,13 +1,15 @@
 import { ItemProps } from "../../types/Item";
+import { ItemOpcaoProps } from "../../types/ItemOpcao";
 import CarrinhoActionTypes from "./action-types";
 
-export const addProdutoAoCarrinho = (payload: ItemProps, valorQuantidade: number, valorAtualizado: number) => ({
+export const addProdutoAoCarrinho = (payload: ItemProps | ItemOpcaoProps, valorQuantidade: number, valorAtualizado: number, itemOpcao = false) => ({
   type: CarrinhoActionTypes.ADD_PRODUTO,
   payload: {
     payload,
     id: payload.id,
     valorQuantidade,
-    valorAtualizado
+    valorAtualizado,
+    itemOpcao
   }
 })
 
