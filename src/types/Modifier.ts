@@ -1,4 +1,4 @@
-type ItemModifierProps = {
+export type ItemModifierProps = {
   availabilityType: string,
   available: boolean,
   id: number,

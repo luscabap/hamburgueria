@@ -4,5 +4,6 @@ export type PayloadReduxPros = {
   id: number,
   payload: ItemProps,
   valorAtualizado: number,
-  valorQuantidade: number
+  valorQuantidade: number,
+  itemOpcao: boolean
 }
