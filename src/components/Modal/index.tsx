@@ -6,6 +6,7 @@ import { conversorMoeda } from "../../utils/conversorModeda";
 import { useState } from "react";
 import { IoMdClose  } from "react-icons/io";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { ItemModifierProps } from "../../types/Modifier";
 
 
 interface IModalProps {
@@ -16,6 +17,7 @@ interface IModalProps {
 
 export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
   const [valorQuantidade, setValorQuantidade] = useState(1);
+  const [opcaoItemSelecionado, setOpcaoItemSelecionado] = useState<ItemModifierProps>();
 
   const dispatch = useDispatch();
 
@@ -29,11 +31,34 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
     resetNumberQtd();
   }
 
+  const handleClickOpcaoProduto = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>, item: ItemProps, opcaoItem: ItemModifierProps | undefined) => {
+    e.preventDefault();
+
+    const id = opcaoItem!.id;
+    const preco = opcaoItem!.price;
+    const valorAtualizadoOpcao = (opcaoItem!.price * valorQuantidade);
+    const itemOpcao = true;
+
+    const itemCarrinho = {
+      id,
+      item, 
+      opcaoItem, 
+      price: preco
+    };
+
+    dispatch(addProdutoAoCarrinho(itemCarrinho, valorQuantidade, valorAtualizadoOpcao, itemOpcao));
+
+    closeModal();
+    resetNumberQtd();
+  }
+
   if (!modalIsOpen) return <></>
 
   const opcoes_lanche = item.modifiers ? "true" : "false";
 
   const valorAtualizado = (item.price * valorQuantidade);
+
+  const valorAtualizadoItemOpcao = (opcaoItemSelecionado?.price === undefined ? 0 : opcaoItemSelecionado?.price * valorQuantidade)
 
   return (
     <Style.BackgroundModal>
@@ -73,17 +98,20 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
                           name="opcao"
                           value={opcao.name}
                           className="containerOpcao__input"
+                          onClick={() => setOpcaoItemSelecionado(opcao)}
                         />
                       </div>
                     </div>
                   )}
                 </div>
               ))}
+              <button 
+                onClick={(e) => handleClickOpcaoProduto(e, item, opcaoItemSelecionado)}
+                className="botao_opcaoItem"
+                >Add to Order - $ {valorAtualizadoItemOpcao}</button>
             </form>
           </div>)
         }
-
-
         <div>
           <Style.ContainerQuantidade valor={valorQuantidade} >
             <div onClick={() => setValorQuantidade(prev => prev - 1)} className="opcaoDecrementar">
@@ -98,7 +126,7 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
               onClick={handleClickAddProduto}
               opcoes_lanche={opcoes_lanche}
           >Add to Order - $ {valorAtualizado}</Style.BotaoPreco>
-        </div>
+        </div>     
       </Style.ContainerModal>
     </Style.BackgroundModal>
   )
