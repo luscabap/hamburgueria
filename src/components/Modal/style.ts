@@ -118,6 +118,22 @@ export const ContainerModal = styled.div`
         border: 10px solid #5f5f5f;
       }
     }
+    
+
+    .botao_opcaoItem{
+      width: 432px;
+      height: 48px;
+      border-radius: 40px;
+      padding: 4px 24px;
+      border: none;
+      background-color: ${props => props.theme.colors.primary};
+      color: ${props => props.theme.colors.textColorContrast};
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      margin: 0 0 12px 0;
+      margin-top: 2rem;
+    }
   }
 `;
 
@@ -129,6 +145,7 @@ export const ContainerQuantidade = styled.div<ContainerQuantidadeProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
 
   div {
     cursor: pointer;
@@ -160,6 +177,7 @@ export const ContainerQuantidade = styled.div<ContainerQuantidadeProps>`
 
 type BotaoPrecoProps = {
   opcoes_lanche:  string;
+  secundario?: string
 }
 
 export const BotaoPreco = styled.button<BotaoPrecoProps>`

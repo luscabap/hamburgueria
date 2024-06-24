@@ -3,22 +3,35 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 320px;
   height: 71px;
+  margin: 1rem 0;
 
   .containerInfos{
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    .nomeItem{
-      font-weight: 400;
-      font-size: 16px;
-      color: ${props => props.theme.colors.textColorPrimary};
-    }
-
     .precoItem{
       font-weight: 500;
       font-size: 16px;
       color: ${props => props.theme.colors.textColorPrimary};
+    }
+
+    &__item{
+      gap: 10px;
+
+      .nomeItem{
+      font-weight: 400;
+      font-size: 16px;
+      color: ${props => props.theme.colors.textColorPrimary};
+      line-height: 18.75px;
+
+      .descricaoItem{
+        font-size: 16px;
+        font-weight: 400;
+        color: ${props => props.theme.colors.textColorSecondary};
+        line-height: 18.75px;
+      }
+    }
     }
   }
 
