@@ -17,8 +17,6 @@ const Cardapio = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  { loading && <div>CARREGANDO...</div> }
-
   { error && <div>Erro</div> }
   
   return (
@@ -28,9 +26,12 @@ const Cardapio = () => {
       <input type="text" name="" id="" className="searchBar" placeholder="Search menu items" />
     </Style.ContainerSearch>
     <Style.Container>
-      <ListaItems
-         secao={items?.sections}
-      />
+      <div className="containerItems">
+        <ListaItems
+          secao={items?.sections}
+        />
+        { loading && <Style.ContainerLoader><div></div><div></div><div></div><div></div></Style.ContainerLoader>}
+      </div>
       <Carrinho />
     </Style.Container>
     </>
