@@ -3,7 +3,7 @@ import { ItemProps } from "../../types/Item";
 import * as Style from "./style";
 import { addProdutoAoCarrinho } from "../../redux/carrinho/actions";
 import { conversorMoeda } from "../../utils/conversorModeda";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IoMdClose  } from "react-icons/io";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { ItemModifierProps } from "../../types/Modifier";
@@ -52,13 +52,27 @@ export const Modal = ({ item, modalIsOpen, closeModal }: IModalProps) => {
     resetNumberQtd();
   }
 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape'){
+      closeModal();
+    }
+  }, [closeModal])
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [handleKeyDown])
+
   if (!modalIsOpen) return <></>
 
   const opcoes_lanche = item.modifiers ? "true" : "false";
 
   const valorAtualizado = (item.price * valorQuantidade);
 
-  const valorAtualizadoItemOpcao = (opcaoItemSelecionado?.price === undefined ? 0 : opcaoItemSelecionado?.price * valorQuantidade)
+  const valorAtualizadoItemOpcao = (opcaoItemSelecionado?.price === undefined ? 0 : opcaoItemSelecionado?.price * valorQuantidade);
 
   return (
     <Style.BackgroundModal>
